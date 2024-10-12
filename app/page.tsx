@@ -15,7 +15,6 @@ export default function LandingPage() {
         <Button asChild variant="outline" className="border-primary text-primary hover:bg-primary hover:text-primary-foreground">
           <Link href="/chat">Chatear como Invitado</Link>
         </Button>
-        
       </div>
     </div>
   );
