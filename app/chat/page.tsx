@@ -24,6 +24,7 @@ export default function ChatPage() {
   const [isMeet, setIsMeet] = useState(false);
   const [isVoiceSelection, setIsVoiceSelection] = useState(false);
   const [isOasis, setIsOasis] = useState(false);
+  const [isTalkAI, setIsTalkAI] = useState(false);
 
   const router = useRouter();
 
@@ -76,7 +77,7 @@ export default function ChatPage() {
     <div className="flex h-full bg-background text-foreground">
       <Aside isVoiceSelection={isVoiceSelection} setIsVoiceSelection={setIsVoiceSelection} isOasis={isOasis} setIsOasis={setIsOasis} />
       <Apartado isOasis={isOasis} setIsOasis={setIsOasis}></Apartado>
-      <Meet isMeet={isMeet} setIsMeet={setIsMeet} messages={messages} setMessages={setMessages} selectedVoice={selectedVoice} setSelectedVoice={setSelectedVoice} />
+      <Meet isMeet={isMeet} setIsMeet={setIsMeet} messages={messages} setMessages={setMessages} selectedVoice={selectedVoice} setSelectedVoice={setSelectedVoice} isTalkAI={isTalkAI} setIsTalkAI={setIsTalkAI} />
       <div className='w-full h-full flex flex-col'>
         <main className="flex-1 overflow-y-auto p-4 space-y-4 relative">
           {!isVoiceSelected && (
@@ -105,7 +106,7 @@ export default function ChatPage() {
             </div>
           )}
           {messages.map((message, index) => (
-            <ChatMessage key={index} role={message.role} content={message.content} />
+            <ChatMessage key={index} role={message.role} content={message.content} isTalkAI={isTalkAI} setIsTalkAI={setIsTalkAI}/>
           ))}
           <Grabacion setIsMeet={setIsMeet}/>
         </main>

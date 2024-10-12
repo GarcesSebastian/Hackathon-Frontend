@@ -1,19 +1,23 @@
 import { cn } from "@/lib/utils"
+import VoiceAI from "./voiceAI"
 
 interface ChatMessageProps {
-  role: 'user' | 'assistant'
-  content: string
+  role: 'user' | 'assistant',
+  content: string,
+  isTalkAI: boolean,
+  setIsTalkAI: any
 }
 
-export function ChatMessage({ role, content }: ChatMessageProps) {
+export function ChatMessage({ role, content, isTalkAI, setIsTalkAI }: ChatMessageProps) {
   return (
-    <div >
+    <div className="flex gap-x-2 h-fit">
       <div className={cn(
-      "max-w-[55%] p-3 rounded-lg",
+      "max-w-[55%] px-3 py-6 rounded-lg flex gap-x-4 items-center justify-center",
       role === 'user' ? "bg-primary text-primary-foreground ml-auto" : "bg-secondary text-secondary-foreground"
     )}>
 
       {content}
+      <VoiceAI isTalkAI={isTalkAI} setIsTalkAI={setIsTalkAI}/>
       </div>
     </div>
   )

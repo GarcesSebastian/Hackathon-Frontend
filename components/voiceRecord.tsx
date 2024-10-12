@@ -11,9 +11,11 @@ interface Settings{
     selectedVoice: any;
     setSelectedVoice: any;
     isMeet: any;
+    isTalkAI: boolean;
+    setIsTalkAI: any;
 }
 
-const VoiceRecord = ({messages, setMessages, selectedVoice, setSelectedVoice, isMeet}: Settings) => {
+const VoiceRecord = ({messages, setMessages, selectedVoice, setSelectedVoice, isMeet, isTalkAI, setIsTalkAI}: Settings) => {
   const [isRecording, setIsRecording] = useState(false);
   const [voiceLevel, setVoiceLevel] = useState(0);
   const [userMessage, setUserMessage] = useState("");
@@ -115,6 +117,8 @@ const VoiceRecord = ({messages, setMessages, selectedVoice, setSelectedVoice, is
       content: message
     };
 
+    setIsTalkAI(true);
+
     const mapMessages = [...messages, sendMessage];
     setMessages(mapMessages);
     setIsReceivingResponse(true);
@@ -134,6 +138,7 @@ const VoiceRecord = ({messages, setMessages, selectedVoice, setSelectedVoice, is
         });
       });
 
+      setIsTalkAI(false);
       speakResponse(fullResponse);
     } catch (error) {
       console.error("Error al obtener respuesta de la IA:", error);
