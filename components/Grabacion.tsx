@@ -72,7 +72,7 @@ const AudioRecorderButton: React.FC = () => {
     <div className="flex flex-col items-end pr-11">
       <button
         onClick={toggleRecording}
-        className="inline-flex items-center justify-center rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none ring-offset-background bg-primary text-primary-foreground hover:bg-primary/90 h-14 w-14 py-2 px-4 rounded-full mb-2"
+        className="inline-flex items-center justify-center  text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none ring-offset-background bg-primary text-primary-foreground hover:bg-primary/90 h-14 w-14 py-2 px-4 rounded-full mb-2"
       >
         {isRecording ? (
           <Square size={24} />
