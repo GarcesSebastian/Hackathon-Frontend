@@ -25,6 +25,7 @@ const VoiceRecord = ({messages, setMessages, selectedVoice, setSelectedVoice, is
   const [isReceivingResponse, setIsReceivingResponse] = useState(false);
   const recognitionRef = useRef<any>(null);
   const synthRef = useRef<SpeechSynthesis | null>(null);
+  const utteranceRef = useRef<SpeechSynthesisUtterance | null>(null);
 
   const simulateVoice = useCallback(() => {
     if (isRecording) {
@@ -96,6 +97,12 @@ const VoiceRecord = ({messages, setMessages, selectedVoice, setSelectedVoice, is
 
   const startRecognition = () => {
     if (recognitionRef.current) {
+      // Stop any ongoing speech
+      if (synthRef.current && utteranceRef.current) {
+        synthRef.current.cancel();
+        setIsTalkAI(false);
+      }
+      
       recognitionRef.current.start();
       setIsListening(true);
       setIsRecording(true);
@@ -148,6 +155,7 @@ const VoiceRecord = ({messages, setMessages, selectedVoice, setSelectedVoice, is
     if (synthRef.current) {
       synthRef.current.cancel(); // Cancel any ongoing speech
       const utterance = new SpeechSynthesisUtterance(text);
+      utteranceRef.current = utterance;
       
       if (selectedVoice) {
         utterance.voice = selectedVoice;
@@ -160,13 +168,18 @@ const VoiceRecord = ({messages, setMessages, selectedVoice, setSelectedVoice, is
 
       utterance.onstart = () => {
         setIsTalkAI(true);
-        console.log(messages[messages.length + 1])
-        console.log(messages.length)
+        console.log(messages[messages.length - 1]);
+        console.log(messages.length);
       };
       utterance.onend = () => {
         setIsTalkAI(false);
+        utteranceRef.current = null;
       };
-      utterance.onerror = (event) => console.error("Error en el habla:", event);
+      utterance.onerror = (event) => {
+        console.error("Error en el habla:", event);
+        setIsTalkAI(false);
+        utteranceRef.current = null;
+      };
 
       synthRef.current.speak(utterance);
     } else {

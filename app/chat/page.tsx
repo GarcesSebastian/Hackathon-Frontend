@@ -15,7 +15,7 @@ import Apartado from '@/components/apartado';
 
 export default function ChatPage() {
   const [messages, setMessages] = useState([
-    { role: 'assistant', content: '¡Hola! Soy tu asistente de salud mental. Antes de empezar, ¿te gustaría elegir una voz para mí?' }
+    { role: 'assistant', content: '¡Hola! Soy tu asistente de salud mental Safety, ¿en qué puedo ayudarte hoy?' }
   ]);
   const [input, setInput] = useState('');
   const [voices, setVoices] = useState([]);
