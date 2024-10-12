@@ -3,9 +3,7 @@ import React,{ useState, useEffect } from 'react';
 import { Brain, Heart, Smile, Sun, Coffee, Music, BookOpen, Flower } from 'lucide-react';
 
 
-function Apartado({estado}: {estado: boolean}) {
-
-
+function Apartado({isOasis, setIsOasis}: {isOasis: boolean, setIsOasis: any}) {
   const [moodRating, setMoodRating] = useState(3);
   const [garden, setGarden] = useState([]);
   const [showGarden, setShowGarden] = useState(false);
@@ -57,7 +55,7 @@ function Apartado({estado}: {estado: boolean}) {
   };
 
   return (
-    <div className={estado ?` absolute left-20 top-14 transition-transform  animate-Animation-click duration-100 font-[Monrope,sans-serif]    w-4/6 h-5/6 overflow-y-auto bg-gradient-to-b from-green-50 via-green-100 to-green-200 py-8 px-4 sm:px-6 lg:px-8 border-2 border-green-300 rounded-lg shadow-lg`:'hidden  min-h-screen bg-gradient-to-b from-green-50 via-green-100 to-green-200 py-8 px-4 sm:px-6 lg:px-8 '}>
+    <div className={isOasis ?` absolute z-20 left-20 top-14 transition-transform  animate-Animation-click duration-100 font-[Monrope,sans-serif] w-4/6 h-5/6 overflow-y-auto bg-gradient-to-b from-green-50 via-green-100 to-green-200 py-8 px-4 sm:px-6 lg:px-8 border-2 border-green-300 rounded-lg shadow-lg`:'hidden  min-h-screen bg-gradient-to-b from-green-50 via-green-100 to-green-200 py-8 px-4 sm:px-6 lg:px-8 '}>
       <div className="max-w-3xl mx-auto">
         <h1 className="text-4xl font-bold text-center text-green-800 mb-8">Oasis de Bienestar Mental</h1>
         
