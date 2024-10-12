@@ -106,7 +106,11 @@ export default function ChatPage() {
             </div>
           )}
           {messages.map((message, index) => (
-            <ChatMessage key={index} role={message.role} content={message.content} isTalkAI={isTalkAI} setIsTalkAI={setIsTalkAI}/>
+              message.role == "user" ? (
+                <ChatMessage key={index} index={index} role={message.role} content={message.content} isTalkAI={false} setIsTalkAI={setIsTalkAI}/>
+              ) : (
+                <ChatMessage key={index} index={index} role={message.role} content={message.content} isTalkAI={isTalkAI} setIsTalkAI={setIsTalkAI}/>
+              )
           ))}
           <Grabacion setIsMeet={setIsMeet}/>
         </main>

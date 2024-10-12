@@ -1,36 +1,34 @@
 "use client"
-import React, { useState, useEffect, useCallback, useRef } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { AudioLines } from 'lucide-react';
-import { sendMessageToSafety } from "@/lib/utils";
 import { CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 
 interface Settings{
     isTalkAI: boolean;
     setIsTalkAI: any;
+    index: number;
 }
 
-const VoiceAI = ({isTalkAI, setIsTalkAI}: Settings) => {
+const VoiceAI = ({isTalkAI, setIsTalkAI, index}: Settings) => {
   const [voiceLevel, setVoiceLevel] = useState(0);
 
   const simulateVoice = useCallback(() => {
-    if (setIsTalkAI) {
+    if (isTalkAI) {
       const newLevel = Math.random();
       setVoiceLevel(newLevel);
     } else {
       setVoiceLevel(0);
     }
-  }, [setIsTalkAI]);
+  }, [isTalkAI]);
 
   useEffect(() => {
     const interval = setInterval(simulateVoice, 100);
     return () => clearInterval(interval);
   }, [simulateVoice]);
 
-  console.log(setIsTalkAI)
-
   return (
-    <CardContent className='flex items-end justify-center w-fit h-fit relative p-0' style={{display: isTalkAI ? "flex" : "none"}}>
+    <CardContent id={index.toString()} className='items-end justify-center w-fit h-fit relative p-0 hidden'>
         <div className="relative flex justify-center items-end">
         <Button className={`relative w-12 h-12 rounded-full focus:outline-none transition-all duration-300 ease-in-out z-20`}>
             <AudioLines className="w-8 h-8 text-white absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2" />

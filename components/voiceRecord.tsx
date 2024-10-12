@@ -117,8 +117,6 @@ const VoiceRecord = ({messages, setMessages, selectedVoice, setSelectedVoice, is
       content: message
     };
 
-    setIsTalkAI(true);
-
     const mapMessages = [...messages, sendMessage];
     setMessages(mapMessages);
     setIsReceivingResponse(true);
@@ -138,7 +136,6 @@ const VoiceRecord = ({messages, setMessages, selectedVoice, setSelectedVoice, is
         });
       });
 
-      setIsTalkAI(false);
       speakResponse(fullResponse);
     } catch (error) {
       console.error("Error al obtener respuesta de la IA:", error);
@@ -161,13 +158,19 @@ const VoiceRecord = ({messages, setMessages, selectedVoice, setSelectedVoice, is
       utterance.rate = rate;
       utterance.lang = "es-ES";
 
+      utterance.onstart = () => {
+        setIsTalkAI(true);
+        console.log(messages[messages.length + 1])
+        console.log(messages.length)
+      };
+      utterance.onend = () => {
+        setIsTalkAI(false);
+      };
+      utterance.onerror = (event) => console.error("Error en el habla:", event);
+
       synthRef.current.speak(utterance);
-      
-      utterance.onstart = () => console.log("Speech started");
-      utterance.onend = () => console.log("Speech ended");
-      utterance.onerror = (event) => console.error("Speech error:", event);
     } else {
-      console.error("Speech synthesis not available");
+      console.error("Síntesis de voz no disponible");
     }
   };
 

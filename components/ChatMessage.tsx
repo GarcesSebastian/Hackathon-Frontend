@@ -5,10 +5,11 @@ interface ChatMessageProps {
   role: 'user' | 'assistant',
   content: string,
   isTalkAI: boolean,
-  setIsTalkAI: any
+  setIsTalkAI: any,
+  index: number,
 }
 
-export function ChatMessage({ role, content, isTalkAI, setIsTalkAI }: ChatMessageProps) {
+export function ChatMessage({ role, content, isTalkAI, setIsTalkAI, index }: ChatMessageProps) {
   return (
     <div className="flex gap-x-2 h-fit">
       <div className={cn(
@@ -17,7 +18,7 @@ export function ChatMessage({ role, content, isTalkAI, setIsTalkAI }: ChatMessag
     )}>
 
       {content}
-      <VoiceAI isTalkAI={isTalkAI} setIsTalkAI={setIsTalkAI}/>
+      <VoiceAI index={index} isTalkAI={isTalkAI} setIsTalkAI={setIsTalkAI}/>
       </div>
     </div>
   )
