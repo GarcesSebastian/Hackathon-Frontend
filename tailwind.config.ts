@@ -78,10 +78,24 @@ const config: Config = {
             height: '0',
           },
         },
+        'animation-click':{
+          from: {
+              opacity: '0', // Convertir a string
+              scale: '0.5', // Convertir a string
+            },
+            to: {
+              opacity: '1',  // Convertir a string
+              scale: '1'     // Convertir a string
+            }
+          }
+         
+          
+          
       },
       animation: {
         'accordion-down': 'accordion-down 0.2s ease-out',
         'accordion-up': 'accordion-up 0.2s ease-out',
+        'Animation-click':'appear ease-in-out 0.3s '
       },
     },
   },

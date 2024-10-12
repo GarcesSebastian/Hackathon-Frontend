@@ -61,3 +61,24 @@
 body{
   height: 100vh;
 }
+/* Para navegadores WebKit (Chrome, Safari, Edge) */
+::-webkit-scrollbar {
+  width: 15px;  /* Ancho de la barra de desplazamiento horizontal */
+  height: 0;
+  background-color: rgb(209, 255, 250); /* Alto de la barra de desplazamiento vertical */
+}
+
+/* Para ocultar completamente la barra */
+::-webkit-scrollbar-thumb {
+ 
+  background-color:rgb(163, 255, 215);
+  width: 20px;
+}
+
+::-webkit-scrollbar-track {
+  display: none;
+  background-color: turquoise;   
+  width: 20px;
+}
+
+

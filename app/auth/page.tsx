@@ -19,7 +19,7 @@ export default function AuthPage() {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-r from-white to-green-100 dark:from-gray-900 dark:to-green-900">
+    <div className="min-h-screen flex items-center justify-center bg-gradient-to-r font-[Monrope,sans-serif] from-white to-green-100 dark:from-gray-900 dark:to-green-900">
       <div className="max-w-md w-full space-y-8 p-10 bg-card rounded-xl shadow-lg">
         <Tabs defaultValue="login">
           <TabsList className="grid w-full grid-cols-2">

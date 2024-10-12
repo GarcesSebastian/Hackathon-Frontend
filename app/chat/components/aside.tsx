@@ -8,12 +8,13 @@ import Link from 'next/link';
 const Aside = () => {
 
   const [state, setState] = React.useState(false);
+  
 const setestado = () => {
   setState(!state);
 }
   return (
-    <aside className="w-20 h-full bg-background p-4 flex flex-col items-center space-y-4 justify-center py-20">
-      <Link href="/">
+    <aside className="w-20 h-full bg-background p-4 flex flex-col items-center space-y-4 justify-center py-20 border-r-2">
+      <Link href="/apartado">
    
       <Button   variant="outline" size="icon">
         <Home className="h-[1.2rem] w-[1.2rem]" />
